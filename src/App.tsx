@@ -1,10 +1,11 @@
 import React from 'react';
 import './App.css';
+import Navbar from './Components/Navbar/Navbar';
 
 const App: React.FC = () => {
   return (
     <div className="App">
-      React Typescript Ecommerce
+      <Navbar />
     </div>
   );
 }
