@@ -7,9 +7,14 @@ import {
   FaBars,
 } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import { NavEle } from "../../Types/Types";
+import Search from "./Search";
 
 const Navbar: React.FC = () => {
-  const options = [
+  const [nav, setNav] = useState<boolean>(false);
+  const [login, setLogin] = useState<boolean>(false);
+
+  const options: NavEle[] = [
     {
       id: 1,
       name: "Profile",
@@ -42,12 +47,6 @@ const Navbar: React.FC = () => {
     },
   ];
 
-  const [nav, setNav] = useState(false);
-
-  const navHandler = () => {
-    setNav(!nav);
-  };
-
   return (
     <div className="flex justify-between items-center w-full h-14 bg-primary text-secondary px-8 md:px-20 fixed">
       <div>
@@ -57,34 +56,61 @@ const Navbar: React.FC = () => {
           </h1>
         </Link>
       </div>
-      <div>Search Bar</div>
-      <div className="hidden md:flex px-4 gap-8">
-        {options.map(({ id, name, child, link }) => (
-          <Link to={link}>
-            <div className="hover:scale-110 duration-500 flex">
-              <div>{child}</div>
-              <div className="pt-1 pl-1">{name}</div>
-            </div>
-          </Link>
-        ))}
-      </div>
-
-      <div onClick={navHandler} className="cursor-pointer md:hidden">
-        {nav ? <FaTimes size={25} /> : <FaBars size={25} />}
-      </div>
-
-      {nav && (
-        <div className="flex flex-col justify-center items-center absolute top-0 right-0 w-9/12 h-screen bg-primary">
+      <Search />
+      {login ? (
+        <div className="hidden md:flex px-4 gap-4">
           {options.map(({ id, name, child, link }) => (
-            <Link onClick={() => setNav(!nav)} to={link}>
-               <div className="hover:scale-110 duration-500 px-4 cursor-pointer py-6 text-4xl">
-                <div>{child}</div>
-                <div className="pt-1 pl-1">{name}</div>
+            <Link to={link}>
+              <div className="hover:scale-110 duration-500 flex">
+                <div className="mt-2">{child}</div>
+                <div className="mt-2 ml-1">{name}</div>
               </div>
             </Link>
           ))}
+          <div>
+            <button
+              onClick={() => setLogin(false)}
+              className="bg-secondary text-primary px-4 py-2 rounded-md"
+            >
+              Logout
+            </button>
+          </div>
+        </div>
+      ) : (
+        <div className="hidden md:flex px-4 gap-2 font-bold ">
+          <button
+            onClick={() => setLogin(true)}
+            className="bg-secondary text-primary px-4 py-2 rounded-md"
+          >
+            Login
+          </button>
+          <button className="bg-secondary text-primary px-4 py-2 rounded-md">
+            Register
+          </button>
         </div>
       )}
+
+      <div onClick={() => setNav(!nav)} className="cursor-pointer md:hidden">
+        {nav ? <FaTimes size={25} /> : <FaBars size={25} />}
+      </div>
+
+      <ul
+        className={`flex flex-col justify-center ${
+          nav ? "w-1/2" : "w-0"
+        }  duration-300 ease-linear items-center absolute top-14 right-0 h-screen bg-primary`}
+      >
+        {nav &&
+          options.map(({ id, name, child, link }) => (
+            <li className="hover:scale-110 duration-500 px-3 cursor-pointer py-2 text-2xl">
+              <Link onClick={() => setNav(!nav)} to={link}>
+                <div className="flex">
+                  {/* <div>{child}</div> */}
+                  <div className="pl-2">{name}</div>
+                </div>
+              </Link>
+            </li>
+          ))}
+      </ul>
     </div>
   );
 };
