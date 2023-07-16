@@ -8,7 +8,7 @@ import {
 } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { NavEle } from "../../Types/Types";
-import Search from "./Search";
+import Search from "../Search";
 
 const Navbar: React.FC = () => {
   const [nav, setNav] = useState<boolean>(false);
@@ -56,7 +56,9 @@ const Navbar: React.FC = () => {
           </h1>
         </Link>
       </div>
-      <Search />
+      <div className="w-full mx-28 hidden md:flex">
+        <Search />
+      </div>
       {login ? (
         <div className="hidden md:flex px-4 gap-4">
           {options.map(({ id, name, child, link }) => (
@@ -99,17 +101,68 @@ const Navbar: React.FC = () => {
           nav ? "w-1/2" : "w-0"
         }  duration-300 ease-linear items-center absolute top-14 right-0 h-screen bg-primary`}
       >
-        {nav &&
-          options.map(({ id, name, child, link }) => (
+        {nav && (
+          <div>
+            <Search />
+          </div>
+        )}
+        {nav && login ? (
+        <div className="flex flex-col justify-center">
+          {options.map(({ id, name, child, link }) => (
             <li className="hover:scale-110 duration-500 px-3 cursor-pointer py-2 text-2xl">
               <Link onClick={() => setNav(!nav)} to={link}>
                 <div className="flex">
-                  {/* <div>{child}</div> */}
                   <div className="pl-2">{name}</div>
                 </div>
               </Link>
             </li>
           ))}
+          <div>
+            <button
+              onClick={() => setLogin(false)}
+              className="bg-secondary text-primary px-4 py-2 rounded-md"
+            >
+              Logout
+            </button>
+          </div>
+        </div>
+      ) : (
+        <div className="px-4 gap-2 font-bold ">
+          <button
+            onClick={() => setLogin(true)}
+            className="bg-secondary text-primary px-4 py-2 rounded-md"
+          >
+            Login
+          </button>
+          <button className="bg-secondary text-primary px-4 py-2 rounded-md">
+            Register
+          </button>
+        </div>
+      )}
+       {/* <div>{nav &&
+          options.map(({ id, name, child, link }) => (
+            <li className="hover:scale-110 duration-500 px-3 cursor-pointer py-2 text-2xl">
+              <Link onClick={() => setNav(!nav)} to={link}>
+                <div className="flex">
+                  <div>{child}</div>
+                  <div className="pl-2">{name}</div>
+                </div>
+              </Link>
+            </li>
+          ))} */}
+        {/* {nav &&( login?(
+          <button
+            onClick={() => setLogin(false)}
+            className="bg-secondary text-primary px-4 py-2 rounded-md"
+          >
+            Logout
+          </button>): <button
+            onClick={() => setLogin(true)}
+            className="bg-secondary text-primary px-4 py-2 rounded-md"
+          >
+            Login
+          </button>
+        )}</div>  */}
       </ul>
     </div>
   );
