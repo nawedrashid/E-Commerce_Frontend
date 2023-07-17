@@ -107,7 +107,7 @@ const Navbar: React.FC = () => {
           </div>
         )}
         {nav && login ? (
-        <div className="flex flex-col justify-center">
+        <div className="flex my-2 flex-col items-center justify-center">
           {options.map(({ id, name, child, link }) => (
             <li className="hover:scale-110 duration-500 px-3 cursor-pointer py-2 text-2xl">
               <Link onClick={() => setNav(!nav)} to={link}>
@@ -117,6 +117,7 @@ const Navbar: React.FC = () => {
               </Link>
             </li>
           ))}
+          <li className="hover:scale-110 duration-500 px-3 cursor-pointer py-2 text-2xl">Orders</li>
           <div>
             <button
               onClick={() => setLogin(false)}
@@ -126,43 +127,19 @@ const Navbar: React.FC = () => {
             </button>
           </div>
         </div>
-      ) : (
-        <div className="px-4 gap-2 font-bold ">
+      ) : ( nav && (
+        <div className="px-4 flex flex-col md:hidden my-4 gap-2 font-bold ">
           <button
             onClick={() => setLogin(true)}
-            className="bg-secondary text-primary px-4 py-2 rounded-md"
+            className="bg-secondary mx-3 text-primary px-4 py-2 rounded-md"
           >
             Login
           </button>
-          <button className="bg-secondary text-primary px-4 py-2 rounded-md">
+          <button className="bg-secondary mx-3 text-primary px-4 py-2 rounded-md">
             Register
           </button>
         </div>
-      )}
-       {/* <div>{nav &&
-          options.map(({ id, name, child, link }) => (
-            <li className="hover:scale-110 duration-500 px-3 cursor-pointer py-2 text-2xl">
-              <Link onClick={() => setNav(!nav)} to={link}>
-                <div className="flex">
-                  <div>{child}</div>
-                  <div className="pl-2">{name}</div>
-                </div>
-              </Link>
-            </li>
-          ))} */}
-        {/* {nav &&( login?(
-          <button
-            onClick={() => setLogin(false)}
-            className="bg-secondary text-primary px-4 py-2 rounded-md"
-          >
-            Logout
-          </button>): <button
-            onClick={() => setLogin(true)}
-            className="bg-secondary text-primary px-4 py-2 rounded-md"
-          >
-            Login
-          </button>
-        )}</div>  */}
+      ))}
       </ul>
     </div>
   );
