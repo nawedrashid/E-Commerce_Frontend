@@ -16,3 +16,10 @@ export type FSocials = {
     child: JSX.Element
     link: string
 }
+
+export type Trending = {
+    id: number
+    child: JSX.Element
+    name: string
+    discount: string
+}

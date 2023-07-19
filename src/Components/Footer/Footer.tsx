@@ -50,7 +50,7 @@ const Footer: React.FC = () => {
     <footer className="bg-primary py-4">
       <div className="container mx-auto px-4">
         <div className="flex flex-wrap items-center justify-between">
-          <div className="w-full md:w-1/4">
+          <div className="w-full flex flex-col items-center md:w-1/4">
             <h4 className="text-lg font-bold text-secondary mb-2">FurniSpot</h4>
             <p className="text-secondary">
               A place to have your custom furnitures.
