@@ -1,51 +1,12 @@
 import React, { useState } from "react";
-import {
-  FaUser,
-  FaHeart,
-  FaShoppingCart,
-  FaTimes,
-  FaBars,
-} from "react-icons/fa";
+import { FaTimes, FaBars } from "react-icons/fa";
 import { Link } from "react-router-dom";
-import { NavEle } from "../../Types/Types";
 import Search from "../Search";
+import { navOptions } from "../ObjectArrays/NavOptions";
 
 const Navbar: React.FC = () => {
   const [nav, setNav] = useState<boolean>(false);
   const [login, setLogin] = useState<boolean>(false);
-
-  const options: NavEle[] = [
-    {
-      id: 1,
-      name: "Profile",
-      child: (
-        <>
-          <FaUser size={25} />
-        </>
-      ),
-      link: "/profile",
-    },
-    {
-      id: 2,
-      name: "Wishlist",
-      child: (
-        <>
-          <FaHeart size={25} />
-        </>
-      ),
-      link: "/wishlist",
-    },
-    {
-      id: 1,
-      name: "Cart",
-      child: (
-        <>
-          <FaShoppingCart size={25} />
-        </>
-      ),
-      link: "/cart",
-    },
-  ];
 
   return (
     <div className="flex justify-between items-center w-full h-14 bg-primary text-secondary px-8 md:px-20 fixed">
@@ -61,7 +22,7 @@ const Navbar: React.FC = () => {
       </div>
       {login ? (
         <div className="hidden md:flex px-4 gap-4">
-          {options.map(({ id, name, child, link }) => (
+          {navOptions.map(({ id, name, child, link }) => (
             <Link to={link}>
               <div className="hover:scale-110 duration-500 flex">
                 <div className="mt-2">{child}</div>
@@ -107,39 +68,43 @@ const Navbar: React.FC = () => {
           </div>
         )}
         {nav && login ? (
-        <div className="flex my-2 flex-col items-center justify-center">
-          {options.map(({ id, name, child, link }) => (
+          <div className="flex my-2 flex-col items-center justify-center">
+            {navOptions.map(({ id, name, child, link }) => (
+              <li className="hover:scale-110 duration-500 px-3 cursor-pointer py-2 text-2xl">
+                <Link onClick={() => setNav(!nav)} to={link}>
+                  <div className="flex">
+                    <div className="pl-2">{name}</div>
+                  </div>
+                </Link>
+              </li>
+            ))}
             <li className="hover:scale-110 duration-500 px-3 cursor-pointer py-2 text-2xl">
-              <Link onClick={() => setNav(!nav)} to={link}>
-                <div className="flex">
-                  <div className="pl-2">{name}</div>
-                </div>
-              </Link>
+              Orders
             </li>
-          ))}
-          <li className="hover:scale-110 duration-500 px-3 cursor-pointer py-2 text-2xl">Orders</li>
-          <div>
-            <button
-              onClick={() => setLogin(false)}
-              className="bg-secondary text-primary px-4 py-2 rounded-md"
-            >
-              Logout
-            </button>
+            <div>
+              <button
+                onClick={() => setLogin(false)}
+                className="bg-secondary text-primary px-4 py-2 rounded-md"
+              >
+                Logout
+              </button>
+            </div>
           </div>
-        </div>
-      ) : ( nav && (
-        <div className="px-4 flex flex-col md:hidden my-4 gap-2 font-bold ">
-          <button
-            onClick={() => setLogin(true)}
-            className="bg-secondary mx-3 text-primary px-4 py-2 rounded-md"
-          >
-            Login
-          </button>
-          <button className="bg-secondary mx-3 text-primary px-4 py-2 rounded-md">
-            Register
-          </button>
-        </div>
-      ))}
+        ) : (
+          nav && (
+            <div className="px-4 flex flex-col md:hidden my-4 gap-2 font-bold ">
+              <button
+                onClick={() => setLogin(true)}
+                className="bg-secondary mx-3 text-primary px-4 py-2 rounded-md"
+              >
+                Login
+              </button>
+              <button className="bg-secondary mx-3 text-primary px-4 py-2 rounded-md">
+                Register
+              </button>
+            </div>
+          )
+        )}
       </ul>
     </div>
   );

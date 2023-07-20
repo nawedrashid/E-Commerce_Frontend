@@ -23,3 +23,8 @@ export type Trending = {
     name: string
     discount: string
 }
+
+export type Categories = {
+    id: number
+    child: JSX.Element
+}

@@ -1,53 +1,9 @@
 import React from "react";
-import { FLinks, FSocials } from "../../Types/Types";
-import { FaFacebookF, FaTwitter, FaInstagram } from "react-icons/fa";
+import { flinks, socials } from "../ObjectArrays/FooterList";
 
 const Footer: React.FC = () => {
-  const socials: FSocials[] = [
-    {
-      id: 1,
-      child: (
-        <>
-          <FaFacebookF />
-        </>
-      ),
-      link: "www.fb.com",
-    },
-    {
-      id: 1,
-      child: (
-        <>
-          <FaTwitter />
-        </>
-      ),
-      link: "www.twitter.com",
-    },
-    {
-      id: 1,
-      child: (
-        <>
-          <FaInstagram />
-        </>
-      ),
-      link: "www.instagram.com",
-    },
-  ];
-
-  const flinks: FLinks[] = [
-    {
-      id: 1,
-      name: "About Us",
-      link: "aboutus",
-    },
-    {
-      id: 2,
-      name: "Contact",
-      link: "contact",
-    },
-  ];
-
   return (
-    <footer className="bg-primary py-4">
+    <footer className="bg-primary mt-8 py-4">
       <div className="container mx-auto px-4">
         <div className="flex flex-wrap items-center justify-between">
           <div className="w-full flex flex-col items-center md:w-1/4">
