@@ -1,30 +1,65 @@
 export type NavEle = {
-    id: number
-    name: string
-    child: JSX.Element
-    link: string
-}
+  id: number;
+  name: string;
+  link: string;
+};
 
 export type FLinks = {
-    id: number
-    name: string
-    link: string
-}
+  id: number;
+  name: string;
+  link: string;
+};
 
 export type FSocials = {
-    id: number
-    child: JSX.Element
-    link: string
-}
+  id: number;
+  child: JSX.Element;
+  link: string;
+};
 
 export type Trending = {
-    id: number
-    child: JSX.Element
-    name: string
-    discount: string
-}
+  id: number;
+  child: JSX.Element;
+  name: string;
+  discount: string;
+};
 
 export type Categories = {
-    id: number
-    child: JSX.Element
+  id: number;
+  name: string;
+  child: JSX.Element;
+};
+
+export type Products = {
+  id: number;
+  name: string;
+  child: JSX.Element;
+  mPrice: number;
+  dPrice: number;
+  rating: number;
+  category: string;
+};
+
+export type User = {
+  id: number;
+  name: string;
+  email: string;
+  totalOrders: number
+  address: Array<Address>;
+  orders: number;
+};
+
+export type Address = {
+  id: string
+  address: string
+  city: string
+  state: string
+  pin: number
 }
+
+export type CartItems = {
+  id: number;
+  name: string;
+  child: JSX.Element;
+  mPrice: number;
+  dPrice: number;
+};

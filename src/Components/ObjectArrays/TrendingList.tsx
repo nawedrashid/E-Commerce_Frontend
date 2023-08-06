@@ -5,7 +5,7 @@ import STable1 from "../../Assets/Images/Table/SideTable1.png";
 import Seat2Sofa1 from "../../Assets/Images/Sofa/2SeaterSofa1.png";
 import Dining1 from "../../Assets/Images/Table/Dining1.png";
 import OfficeChair1 from "../../Assets/Images/Chair/OfficeChair1.png";
-import Cabinet1 from "../../Assets/Images/Drawers/Cabinet1.png";
+import Cabinet1 from "../../Assets/Images/Cabinet1.png";
 import { Trending } from "../../Types/Types";
 
 

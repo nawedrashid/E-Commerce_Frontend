@@ -22,10 +22,10 @@ const Navbar: React.FC = () => {
       </div>
       {login ? (
         <div className="hidden md:flex px-4 gap-4">
-          {navOptions.map(({ id, name, child, link }) => (
+          {navOptions.map(({ id, name, link }) => (
             <Link to={link}>
               <div className="hover:scale-110 duration-500 flex">
-                <div className="mt-2">{child}</div>
+                {/* <div className="mt-2">{child}</div> */}
                 <div className="mt-2 ml-1">{name}</div>
               </div>
             </Link>
@@ -69,7 +69,7 @@ const Navbar: React.FC = () => {
         )}
         {nav && login ? (
           <div className="flex my-2 flex-col items-center justify-center">
-            {navOptions.map(({ id, name, child, link }) => (
+            {navOptions.map(({ id, name, link }) => (
               <li className="hover:scale-110 duration-500 px-3 cursor-pointer py-2 text-2xl">
                 <Link onClick={() => setNav(!nav)} to={link}>
                   <div className="flex">
@@ -78,9 +78,6 @@ const Navbar: React.FC = () => {
                 </Link>
               </li>
             ))}
-            <li className="hover:scale-110 duration-500 px-3 cursor-pointer py-2 text-2xl">
-              Orders
-            </li>
             <div>
               <button
                 onClick={() => setLogin(false)}
