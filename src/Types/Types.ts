@@ -21,6 +21,10 @@ export type Trending = {
   child: JSX.Element;
   name: string;
   discount: string;
+  mPrice: number;
+  dPrice: number;
+  rating: number;
+  category: string;
 };
 
 export type Categories = {
@@ -43,18 +47,18 @@ export type User = {
   id: number;
   name: string;
   email: string;
-  totalOrders: number
+  totalOrders: number;
   address: Array<Address>;
   orders: number;
 };
 
 export type Address = {
-  id: string
-  address: string
-  city: string
-  state: string
-  pin: number
-}
+  id: string;
+  address: string;
+  city: string;
+  state: string;
+  pin: number;
+};
 
 export type CartItems = {
   id: number;
