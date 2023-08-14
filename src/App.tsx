@@ -11,6 +11,8 @@ import Cart from './Pages/Cart';
 import ProductDetails from './Pages/ProductDetails';
 import Wishlist from './Pages/Wishlist';
 import Orders from './Pages/Orders';
+import Login from './Pages/Login';
+import Registration from './Pages/Registration';
 
 const App: React.FC = () => {
   return (
@@ -25,6 +27,8 @@ const App: React.FC = () => {
         <Route path='/productDetails' element={<ProductDetails />} />
         <Route path='/wishlist' element={<Wishlist />} />
         <Route path='/orders' element={<Orders />} />
+        <Route path='/login' element={<Login />} />
+        <Route path='/registration' element={<Registration />} />
       </Routes> 
       <Footer />
     </div>
