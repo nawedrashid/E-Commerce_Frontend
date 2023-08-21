@@ -41,7 +41,6 @@ const UserProfile: React.FC = () => {
         pin: 937537,
       },
     ],
-    orders: 5,
   };
 
   const handleLogOut = () => {

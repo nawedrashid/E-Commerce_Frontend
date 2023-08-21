@@ -49,7 +49,6 @@ export type User = {
   email: string;
   totalOrders: number;
   address: Array<Address>;
-  orders: number;
 };
 
 export type Address = {
