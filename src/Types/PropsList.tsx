@@ -16,3 +16,7 @@ export type UserProps = {
     userData: User
     setCurrentAddress : (address:Address) => void;
   };
+
+  export type AddressFormProps = {
+    setShowAddressForm : (value:boolean) => void;
+  } 
