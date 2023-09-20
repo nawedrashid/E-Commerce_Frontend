@@ -1,7 +1,10 @@
-import React from "react";
+import React, { useContext } from "react";
 import Design from '../Assets/Images/Design.png'
+import { userSignInContext } from "../Components/Context/SignInContext";
 
 const Login: React.FC = () => {
+
+  const {Login} = useContext(userSignInContext)
   return (
     <div className="h-auto pt-10">
       <div className="py-20 md:mx-auto mx-4 max-w-screen-xl">
@@ -36,7 +39,7 @@ const Login: React.FC = () => {
             </div>
           </div>
           <div className="flex flex-col justify-center items-center gap-2">
-            <button className="px-8 py-2 mt-4 bg-secondary text-primary rounded-md">
+            <button onClick={Login} className="px-8 py-2 mt-4 bg-secondary text-primary rounded-md">
               Login
             </button>
             <p className="text-secondary">Create new account</p>

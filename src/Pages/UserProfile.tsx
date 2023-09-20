@@ -1,6 +1,7 @@
-import { useState } from "react";
-import { Address, User } from "../Types/Types";
+import { useState, useContext } from "react";
+import { Address } from "../Types/Types";
 import AddressCom from "../Components/AddressComponents/Address";
+import { userSignInContext } from "../Components/Context/SignInContext";
 
 const UserProfile: React.FC = () => {
   const [selectedItem, setSelectedItem] = useState<string>("profile");
@@ -12,36 +13,7 @@ const UserProfile: React.FC = () => {
     state: "state0",
     pin: 762464,
   });
-
-  const UserData: User = {
-    id: 1,
-    name: "John Doe",
-    email: "johndoe@example.com",
-    totalOrders: 5,
-    address: [
-      {
-        id: "a0",
-        address: "abc road xyz colony",
-        city: "city0",
-        state: "state0",
-        pin: 762464,
-      },
-      {
-        id: "a1",
-        address: "abc road xyz colony",
-        city: "City1",
-        state: "State1",
-        pin: 826367,
-      },
-      {
-        id: "a2",
-        address: "abc road xyz colony",
-        city: "City1",
-        state: "State1",
-        pin: 937537,
-      },
-    ],
-  };
+  const {userData} = useContext(userSignInContext)
 
   const handleLogOut = () => {
     setLoggingOut(true);
@@ -79,16 +51,16 @@ const UserProfile: React.FC = () => {
           <div className="flex flex-col gap-4 p-5">
             <p>
               <span className="text-gray-600 me-1">Username:</span>
-              <span className="break-all">{UserData.name}</span>
+              <span className="break-all">{userData.name}</span>
             </p>
             <p>
               {" "}
               <span className="text-gray-600 me-1">Email:</span>{" "}
-              <span className="break-all">{UserData.email}</span>
+              <span className="break-all">{userData.email}</span>
             </p>
             <p>
               <span className="text-gray-600 me-1">Orders:</span>
-              <span className="break-all">{UserData.totalOrders}</span>
+              <span className="break-all">{userData.totalOrders}</span>
             </p>
             <hr />
             <button
@@ -100,7 +72,7 @@ const UserProfile: React.FC = () => {
             </button>
           </div>
         ) : (
-          <AddressCom currentAddress={currentAddress} userData={UserData} setCurrentAddress={setCurrentAddress} />
+          <AddressCom currentAddress={currentAddress} userData={userData} setCurrentAddress={setCurrentAddress} />
         )}
       </div>
     </div>

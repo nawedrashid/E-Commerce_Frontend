@@ -1,12 +1,13 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { FaTimes, FaBars } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import Search from "../Search";
 import { navOptions } from "../ObjectArrays/NavOptions";
+import { userSignInContext } from "../Context/SignInContext";
 
 const Navbar: React.FC = () => {
   const [nav, setNav] = useState<boolean>(false);
-  const [login, setLogin] = useState<boolean>(false);
+  const { login, setLogin } = useContext(userSignInContext);
 
   return (
     <div className="flex justify-between items-center w-full h-14 bg-primary text-secondary px-8 md:px-20 fixed">
@@ -32,7 +33,7 @@ const Navbar: React.FC = () => {
           ))}
           <div>
             <button
-              onClick={() => setLogin(false)}
+              onClick={(e) => setLogin(false)}
               className="bg-secondary text-primary px-4 py-2 rounded-md"
             >
               Logout
@@ -41,15 +42,16 @@ const Navbar: React.FC = () => {
         </div>
       ) : (
         <div className="hidden md:flex px-4 gap-2 font-bold ">
-          <button
-            onClick={() => setLogin(true)}
-            className="bg-secondary text-primary px-4 py-2 rounded-md"
-          >
-            Login
-          </button>
-          <button className="bg-secondary text-primary px-4 py-2 rounded-md">
-            Register
-          </button>
+          <Link to={"/login"}>
+            <button className="bg-secondary text-primary px-4 py-2 rounded-md">
+              Login
+            </button>
+          </Link>
+          <Link to={"/registration"}>
+            <button className="bg-secondary text-primary px-4 py-2 rounded-md">
+              Register
+            </button>
+          </Link>
         </div>
       )}
 
@@ -90,15 +92,16 @@ const Navbar: React.FC = () => {
         ) : (
           nav && (
             <div className="px-4 flex flex-col md:hidden my-4 gap-2 font-bold ">
-              <button
-                onClick={() => setLogin(true)}
-                className="bg-secondary mx-3 text-primary px-4 py-2 rounded-md"
-              >
-                Login
-              </button>
-              <button className="bg-secondary mx-3 text-primary px-4 py-2 rounded-md">
-                Register
-              </button>
+              <Link to={"/login"}>
+                <button className="bg-secondary mx-3 text-primary px-4 py-2 rounded-md">
+                  Login
+                </button>
+              </Link>
+              <Link to={"/registration"}>
+                <button className="bg-secondary mx-3 text-primary px-4 py-2 rounded-md">
+                  Register
+                </button>
+              </Link>
             </div>
           )
         )}
